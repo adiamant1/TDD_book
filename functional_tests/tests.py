@@ -40,9 +40,12 @@ class NewVisitorTest(LiveServerTestCase):
 		# is tying fly-fishing lures)
 		inputbox.send_keys('Buy peacock feathers')
 		
-		# When she hits enter, the page updates, and now the page lists
-		# "1: Buy peacock feathers" as an item in a to-do list
+		# When she hits enter, she is taken to a new URL,
+		# and now the page lists "1: Buy peacock feathers" as an item in a
+		# to-do list table
 		inputbox.send_keys(Keys.ENTER)
+		edith_list_url = self.browser.current_url
+		self.assertRegex(edith_list_url, '/lists/.+')
 		self.check_for_row_in_list_table('1: Buy peacock feathers')
 		
 		# There is still a text box inviting her to add another item. She
@@ -55,16 +58,13 @@ class NewVisitorTest(LiveServerTestCase):
 		self.check_for_row_in_list_table('1: Buy peacock feathers')
 		self.check_for_row_in_list_table('2: Use peacock feathers to make a fly')
 		
-		# There is still a text box inviting her to add another item. She
-		# enters "Use peacock feathers to make a fly" (Edith is very methodical)
-		self.fail('Finish the test!')
-
-		# The page updates again, and now shows both items on her list
 
 		# Edith wonders whether the site will remember her list. Then she sees
 		# that the site has generated a unique URL for her -- there is some
 		# explanatory text to that effect.
-
+		
+		self.fail('Finish the test!')
+		
 		# She visits that URL - her to-do list is still there.
 
 		# Satisfied, she goes back to sleep
