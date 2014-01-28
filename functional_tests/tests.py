@@ -92,8 +92,6 @@ class NewVisitorTest(LiveServerTestCase):
 		self.assertIn('Buy milk', page_text)
 
 		# Satisified, she goes back to sleep		
-
-		self.fail('Finish the test!')
 		
 if __name__== '__main__':
 	unittest.main(warnings='ignore')
