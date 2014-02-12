@@ -16,7 +16,7 @@ class Item(models.Model):
 		unique_together = ('list', 'text')
 	
 	def save(self, *args, **kwargs):
-		self.full_clean()
+#		self.full_clean()
 		super().save(*args, **kwargs)
 	
 	def __str__(self):
